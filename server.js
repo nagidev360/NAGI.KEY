@@ -6,7 +6,8 @@ const DEFAULT_PRODUCT="CODEVAULT",MAX_DAYS=3650,SESSION_TTL=8*60*60*1000;
 if(!KEY_SECRET||KEY_SECRET.length<32)throw new Error("KEY_SECRET must be at least 32 characters.");
 if(!SESSION_SECRET||SESSION_SECRET.length<32)throw new Error("SESSION_SECRET must be at least 32 characters.");
 if(!ADMIN_EMAIL||!ADMIN_PASSWORD)throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD are required.");
-app.set("trust proxy",1);app.use(helmet({crossOriginResourcePolicy:false}));
+app.set("trust proxy",1);
+app.use(helmet({crossOriginResourcePolicy:false,contentSecurityPolicy:false}));
 const allowedOrigins=new Set(["https://nagi-key-clean.onrender.com","https://nagi-key-4sli.onrender.com","https://codevault-mouk.onrender.com"]);
 const corsOptions={origin:(origin,cb)=>{if(!origin||allowedOrigins.has(origin))return cb(null,true);return cb(null,false)},credentials:true,methods:["GET","POST","OPTIONS"],allowedHeaders:["Content-Type","Accept"]};
 app.use(cors(corsOptions));app.use(express.json({limit:"16kb"}));
@@ -15,7 +16,7 @@ function safeEqualText(a,b){const aa=Buffer.from(String(a||"")),bb=Buffer.from(S
 function encode(v){return Buffer.from(v).toString("base64url")}function sign(v,secret=KEY_SECRET){return crypto.createHmac("sha256",secret).update(v).digest("base64url")}
 function normalizeDays(v){const d=Number(v);return Number.isFinite(d)?Math.max(1,Math.min(Math.floor(d),MAX_DAYS)):30}
 function createSession(email){const p=encode(JSON.stringify({email,exp:Date.now()+SESSION_TTL,nonce:crypto.randomBytes(16).toString("hex")}));return p+"."+sign(p,SESSION_SECRET)}
-function readSession(req){const raw=req.headers.cookie?.split(";").map(x=>x.trim()).find(x=>x.startsWith("nagi_session="))?.slice(13);if(!raw)return null;const [p,s]=raw.split(".");if(!p||!s||!safeEqualText(s,sign(p,SESSION_SECRET)))return null;try{const d=JSON.parse(Buffer.from(p,"base64url").toString("utf8"));if(d.email!==ADMIN_EMAIL||Date.now()>=Number(d.exp))return null;return d}catch{return null}}
+function readSession(req){const raw=req.headers.cookie?.split(";").map(x=>x.trim()).find(x=>x.startsWith("nagi_session="))?.slice(13);if(!raw)return null;const[p,s]=raw.split(".");if(!p||!s||!safeEqualText(s,sign(p,SESSION_SECRET)))return null;try{const d=JSON.parse(Buffer.from(p,"base64url").toString("utf8"));if(d.email!==ADMIN_EMAIL||Date.now()>=Number(d.exp))return null;return d}catch{return null}}
 function requireAuth(req,res,next){if(!readSession(req))return res.status(401).json({error:"LOGIN_REQUIRED"});next()}
 function cookie(res,value,maxAge=SESSION_TTL){res.setHeader("Set-Cookie",`nagi_session=${value}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=${Math.floor(maxAge/1000)}`)}
 function createKey({clientId,days}){const now=Date.now(),exp=now+normalizeDays(days)*86400000,p={v:1,product:DEFAULT_PRODUCT,clientId:clientId?String(clientId).slice(0,128):null,iat:now,exp,nonce:crypto.randomBytes(16).toString("hex")},e=encode(JSON.stringify(p));return{key:"NAGI-"+e+"."+sign(e),payload:p}}
