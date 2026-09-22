@@ -1,97 +1,27 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07070a">
-<title>NAGI.KEY — CODEVAULT Key Infrastructure</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07070a"><title>NAGI.KEY — CODEVAULT</title>
 <style>
-:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f7f7fa;background:#07070a}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0%,#19142a 0,#07070a 42%),#07070a}
-.wrap{width:min(980px,100%);margin:auto;padding:28px 18px 60px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:24px}
-.brand{font-size:24px;font-weight:800;letter-spacing:-.7px}.brand span{color:#9d7cff}
-.status{font-size:12px;border:1px solid #292936;border-radius:999px;padding:7px 10px;color:#aaa;background:#101016}
-.status.ok{color:#8ef0b0;border-color:#214d35}
-.hero{margin-bottom:24px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#9d7cff;font-weight:700}
-h1{font-size:clamp(38px,7vw,68px);line-height:.98;margin:9px 0 14px;letter-spacing:-3px}
-.hero p{max-width:650px;color:#a9a9b4;line-height:1.65;margin:0}
-.tabs{display:flex;gap:8px;margin:24px 0 14px}.tab{width:auto;padding:10px 15px;background:#101016;color:#aaa;border:1px solid #292936}.tab.active{background:#f5f5f7;color:#08080b;border-color:#f5f5f7}
-.card{background:rgba(16,16,22,.88);border:1px solid #292936;border-radius:22px;padding:22px;box-shadow:0 20px 80px #0007}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:720px){.grid{grid-template-columns:1fr}}
-label{display:block;font-size:12px;color:#8e8e9b;margin:0 0 7px}
-input,button{font:inherit;width:100%;border-radius:12px;padding:13px 14px;border:1px solid #30303a;background:#0b0b10;color:#fff}
-input:focus{outline:2px solid #6e55c8;outline-offset:1px}
-button{cursor:pointer;font-weight:750;background:#f5f5f7;color:#08080b;border-color:#f5f5f7;margin-top:8px}
-button.secondary{background:#17171e;color:#eee;border-color:#30303a}
-.actions{display:flex;gap:10px}.actions button{flex:1}
-.result{margin-top:16px;background:#09090d;border:1px solid #292936;border-radius:14px;padding:15px;min-height:82px;white-space:pre-wrap;overflow-wrap:anywhere;color:#d9d9df}
-.good{color:#8ef0b0}.bad{color:#ff8e9b}
-.note{font-size:12px;color:#777783;margin-top:10px;line-height:1.5}
-.hidden{display:none}.footer{margin-top:18px;color:#666673;font-size:12px;text-align:center}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header class="top"><div class="brand">NAGI<span>.</span>KEY</div><div id="status" class="status">Checking service…</div></header>
-<section class="hero"><div class="eyebrow">Key infrastructure</div><h1>CODEVAULT<br>KEY SYSTEM</h1><p>Generate signed CODEVAULT license keys and verify them through one server-side API.</p></section>
+:root{font-family:Inter,system-ui,sans-serif;color:#f7f7fa;background:#07070a}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0%,#19142a,#07070a 45%)}.wrap{width:min(980px,100%);margin:auto;padding:28px 18px 60px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.brand{font-size:24px;font-weight:800}.brand span{color:#9d7cff}.status{font-size:12px;border:1px solid #292936;border-radius:999px;padding:7px 10px;color:#aaa}.ok{color:#8ef0b0!important;border-color:#214d35!important}.hero{margin-bottom:22px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#9d7cff;font-weight:700}h1{font-size:clamp(38px,7vw,68px);line-height:.98;margin:9px 0 14px;letter-spacing:-3px}.hero p{color:#a9a9b4;line-height:1.6}.card{background:#101016e8;border:1px solid #292936;border-radius:22px;padding:22px;box-shadow:0 20px 80px #0007}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:720px){.grid{grid-template-columns:1fr}}label{display:block;font-size:12px;color:#8e8e9b;margin:0 0 7px}input,button{font:inherit;width:100%;border-radius:12px;padding:13px 14px;border:1px solid #30303a;background:#0b0b10;color:#fff}input:focus{outline:2px solid #6e55c8}button{cursor:pointer;font-weight:750;background:#f5f5f7;color:#08080b;border-color:#f5f5f7;margin-top:8px}button.secondary{background:#17171e;color:#eee;border-color:#30303a}.actions{display:flex;gap:10px}.actions button{flex:1}.result{margin-top:16px;background:#09090d;border:1px solid #292936;border-radius:14px;padding:15px;min-height:82px;white-space:pre-wrap;overflow-wrap:anywhere}.good{color:#8ef0b0}.bad{color:#ff8e9b}.note{font-size:12px;color:#777783;margin-top:10px;line-height:1.5}.hidden{display:none}.footer{margin-top:18px;color:#666673;font-size:12px;text-align:center}.user{font-size:12px;color:#999;margin:0 0 15px}
+</style></head><body><div class="wrap">
+<header class="top"><div class="brand">NAGI<span>.</span>KEY</div><div id="status" class="status">Checking…</div></header>
+<section class="hero"><div class="eyebrow">Private key infrastructure</div><h1>CODEVAULT<br>KEY SYSTEM</h1><p>Secure login, CODEVAULT key generation, and public key verification.</p></section>
 
-<div class="tabs">
-<button class="tab active" data-tab="generate">Generate</button>
-<button class="tab" data-tab="verify">Verify</button>
-</div>
+<section id="login" class="card"><div class="eyebrow">ADMIN LOGIN</div><h2>Sign in</h2><label>Email</label><input id="email" type="email" autocomplete="username" placeholder="Email"><label style="margin-top:12px">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Password"><button id="loginBtn">Login</button><div id="loginResult" class="result">Enter your credentials.</div></section>
 
-<section id="generate" class="card panel">
-<div class="grid">
-<div><label>Client ID (optional)</label><input id="clientId" maxlength="128" placeholder="user / device / client"></div>
-<div><label>Validity</label><input id="days" type="number" min="1" max="3650" value="30"></div>
-<div><div><label>Generator token</label><input id="token" type="password" autocomplete="off" placeholder="Private Render GENERATOR_TOKEN"></div></div>
-</div>
-<div class="actions"><button id="generateBtn">Generate CODEVAULT Key</button><button class="secondary" id="clearGenerate">Clear</button></div>
-<div id="generateResult" class="result">Ready.</div>
-<div class="note">The generator token is only sent to the key API over HTTPS. Never commit it to GitHub or frontend source code.</div>
-</section>
+<section id="dashboard" class="hidden"><div class="card"><div class="user">Signed in as <b id="userEmail"></b></div><div class="actions"><button class="secondary" id="logoutBtn">Logout</button></div></div>
+<div class="card" style="margin-top:14px"><div class="eyebrow">GENERATE</div><h2>CODEVAULT License Key</h2><div class="grid"><div><label>Client ID (optional)</label><input id="clientId" maxlength="128" placeholder="user / device / client"></div><div><label>Validity (days)</label><input id="days" type="number" min="1" max="3650" value="30"></div></div><div class="actions"><button id="generateBtn">Generate Key</button><button class="secondary" id="clearGenerate">Clear</button></div><div id="generateResult" class="result">Ready.</div></div></section>
 
-<section id="verify" class="card panel hidden">
-<label>CODEVAULT Key</label>
-<input id="verifyKey" autocomplete="off" placeholder="NAGI-…">
-<div class="actions"><button id="verifyBtn">Verify Key</button><button class="secondary" id="clearVerify">Clear</button></div>
-<div id="verifyResult" class="result">Enter a key to verify.</div>
-</section>
-
-<div class="footer">NAGI.KEY v2 · CODEVAULT signing authority</div>
-</div>
+<section class="card" style="margin-top:14px"><div class="eyebrow">VERIFY</div><h2>Verify CODEVAULT Key</h2><input id="verifyKey" autocomplete="off" placeholder="NAGI-…"><div class="actions"><button id="verifyBtn">Verify Key</button><button class="secondary" id="clearVerify">Clear</button></div><div id="verifyResult" class="result">Enter a key to verify.</div></section>
+<div class="footer">NAGI.KEY · CODEVAULT signing authority</div></div>
 <script>
 const $=id=>document.getElementById(id);
-document.querySelectorAll(".tab").forEach(btn=>btn.onclick=()=>{
- document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
- document.querySelectorAll(".panel").forEach(x=>x.classList.add("hidden"));
- btn.classList.add("active");$(btn.dataset.tab).classList.remove("hidden");
-});
-async function jsonRequest(url,options){
- const r=await fetch(url,options);let data={};try{data=await r.json()}catch{}
- return {ok:r.ok,data};
-}
-$("generateBtn").onclick=async()=>{
- const out=$("generateResult");out.textContent="Generating…";out.className="result";
- try{
-  const {ok,data}=await jsonRequest("/api/key/generate",{method:"POST",headers:{"Content-Type":"application/json","X-Generator-Token":$("token").value},body:JSON.stringify({clientId:$("clientId").value.trim()||null,days:Number($("days").value)||30})});
-  if(!ok)throw new Error(data.error||"Generation failed");
-  out.innerHTML='<span class="good">Key generated</span>\n\n'+data.key+'\n\nExpires: '+new Date(data.expiresAt).toLocaleString();
-  try{await navigator.clipboard.writeText(data.key)}catch{}
- }catch(e){out.innerHTML='<span class="bad">'+e.message+'</span>'}
-};
-$("verifyBtn").onclick=async()=>{
- const out=$("verifyResult");out.textContent="Verifying…";out.className="result";
- try{
-  const {ok,data}=await jsonRequest("/api/key/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({key:$("verifyKey").value.trim()})});
-  if(!ok)throw new Error(data.reason||"INVALID_KEY");
-  out.innerHTML='<span class="good">VALID CODEVAULT KEY</span>\n\nClient: '+(data.clientId||"—")+'\nIssued: '+new Date(data.issuedAt).toLocaleString()+'\nExpires: '+new Date(data.expiresAt).toLocaleString();
- }catch(e){out.innerHTML='<span class="bad">INVALID KEY · '+e.message+'</span>'}
-};
-$("clearGenerate").onclick=()=>{$("clientId").value="";$("token").value="";$("days").value=30;$("generateResult").textContent="Ready."};
-$("clearVerify").onclick=()=>{$("verifyKey").value="";$("verifyResult").textContent="Enter a key to verify."};
-(async()=>{try{const r=await fetch("/api/health");const d=await r.json();if(d.ok){$("status").textContent="● Service online";$("status").classList.add("ok")}}catch{$("status").textContent="Service unavailable"}})();
-</script>
-</body>
-</html>
+async function req(url,options={}){const r=await fetch(url,{credentials:"same-origin",...options});let d={};try{d=await r.json()}catch{}return{ok:r.ok,data:d}}
+function showLogin(){ $("login").classList.remove("hidden");$("dashboard").classList.add("hidden");}
+function showDash(email){$("login").classList.add("hidden");$("dashboard").classList.remove("hidden");$("userEmail").textContent=email}
+$("loginBtn").onclick=async()=>{const o=$("loginResult");o.textContent="Signing in…";try{const r=await req("/api/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:$("email").value.trim(),password:$("password").value})});if(!r.ok)throw Error(r.data.error||"Login failed");showDash(r.data.email);o.textContent="";$("password").value=""}catch(e){o.innerHTML='<span class="bad">'+e.message+'</span>'}};
+$("logoutBtn").onclick=async()=>{await req("/api/auth/logout",{method:"POST"});showLogin()};
+$("generateBtn").onclick=async()=>{const o=$("generateResult");o.textContent="Generating…";try{const r=await req("/api/key/generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({clientId:$("clientId").value.trim()||null,days:Number($("days").value)||30})});if(r.data.error==="LOGIN_REQUIRED"){showLogin();throw Error("Login required")}if(!r.ok)throw Error(r.data.error||"Generation failed");o.innerHTML='<span class="good">KEY GENERATED</span>\n\n'+r.data.key+'\n\nExpires: '+new Date(r.data.expiresAt).toLocaleString();try{await navigator.clipboard.writeText(r.data.key)}catch{}}catch(e){o.innerHTML='<span class="bad">'+e.message+'</span>'}};
+$("verifyBtn").onclick=async()=>{const o=$("verifyResult");o.textContent="Verifying…";const r=await req("/api/key/verify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({key:$("verifyKey").value.trim()})});if(r.ok)o.innerHTML='<span class="good">VALID CODEVAULT KEY</span>\n\nClient: '+(r.data.clientId||"—")+'\nIssued: '+new Date(r.data.issuedAt).toLocaleString()+'\nExpires: '+new Date(r.data.expiresAt).toLocaleString();else o.innerHTML='<span class="bad">INVALID KEY · '+(r.data.reason||"ERROR")+'</span>'};
+$("clearGenerate").onclick=()=>{$("clientId").value="";$("days").value=30;$("generateResult").textContent="Ready."};$("clearVerify").onclick=()=>{$("verifyKey").value="";$("verifyResult").textContent="Enter a key to verify."};
+(async()=>{try{const h=await req("/api/health");if(h.data.ok){$("status").textContent="● Service online";$("status").classList.add("ok")}}catch{$("status").textContent="Service unavailable"}try{const m=await req("/api/auth/me");if(m.ok)showDash(m.data.email);else showLogin()}catch{showLogin()}})();
+</script></body></html>
