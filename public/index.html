@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NAGI.KEY</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,sans-serif;background:#08080b;color:#f5f5f5;display:grid;place-items:center;padding:24px}
+.card{width:min(720px,100%);background:#111116;border:1px solid #292932;border-radius:24px;padding:32px;box-shadow:0 24px 80px #0008}
+h1{margin:0 0 8px;font-size:42px;letter-spacing:-1px}.sub{color:#a7a7b2;margin-bottom:28px}
+.grid{display:grid;gap:14px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:600px){.row{grid-template-columns:1fr}}
+label{font-size:13px;color:#aaa}input,button{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #33333d;background:#0b0b0f;color:#fff;font:inherit}button{cursor:pointer;background:#fff;color:#08080b;border:0;font-weight:700}
+pre{white-space:pre-wrap;word-break:break-word;background:#09090c;border:1px solid #292932;padding:16px;border-radius:12px;min-height:70px}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#1c1c24;color:#bbb;font-size:12px}
+</style>
+</head>
+<body>
+<main class="card">
+  <span class="badge">KEY INFRASTRUCTURE</span>
+  <h1>NAGI.KEY</h1>
+  <div class="sub">Secure key generation and verification service for CODEVAULT.</div>
+  <div class="grid">
+    <div class="row">
+      <div><label>Product</label><input id="product" value="CODEVAULT"></div>
+      <div><label>Validity (days)</label><input id="days" type="number" value="30" min="1" max="3650"></div>
+    </div>
+    <div><div><label>Client ID (optional)</label><input id="clientId" placeholder="user/device/client"></div></div>
+    <div><div><label>Generator token</label><input id="token" type="password" placeholder="Render GENERATOR_TOKEN"></div></div>
+    <button onclick="generate()">Generate Key</button>
+    <pre id="result">Ready.</pre>
+  </div>
+</main>
+<script>
+async function generate(){
+  const result=document.getElementById("result");
+  result.textContent="Generating...";
+  try{
+    const r=await fetch("/api/key/generate",{
+      method:"POST",headers:{
+        "Content-Type":"application/json",
+        "X-Generator-Token":document.getElementById("token").value
+      },
+      body:JSON.stringify({
+        product:document.getElementById("product").value.trim()||"CODEVAULT",
+        days:Number(document.getElementById("days").value)||30,
+        clientId:document.getElementById("clientId").value.trim()||null
+      })
+    });
+    const data=await r.json();
+    result.textContent=r.ok ? data.key+"\\n\\nExpires: "+data.expiresAt : JSON.stringify(data,null,2);
+  }catch(e){result.textContent="Request failed: "+e.message}
+}
+</script>
+</body>
+</html>
